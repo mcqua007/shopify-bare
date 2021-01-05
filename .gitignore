@@ -8,4 +8,6 @@
 # Ignore bundler config
 /.bundle
 
-config.yml
+*config.yml
+*.env
+*node_modules/
