@@ -4,14 +4,25 @@
   "description": "Naked theme for shopify brandhaus theme",
   "main": "",
   "scripts": {
-    "start": "cd dist && theme open --env=development && theme watch --env=development",
+    "start": "(cd dist && theme open --env=development && theme watch --env=development) & gulp watch",
     "dev:deploy": "cd dist && theme depoly --env=development",
-    "dev:watch": "cd dist && theme watch --env=development",
+    "dev:watch": "(cd dist && theme watch --env=development) & gulp watch",
     "dev:open": "cd dist && theme open --env=development",
     "dev:download": "cd dist && theme download --env=development",
     "live:deploy": "cd dist && theme depoly --env=live",
     "live:download": "cd dist && theme download --env=live"
   },
   "author": "Sean McQuaid",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^5.0.0"
+  }
 }
