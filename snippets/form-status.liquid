@@ -6,7 +6,7 @@
     - success_message: {String} Success message locale key. Default to 'contact.form.post_success' (optional)
 
     Usage:
-    {% include 'form-status', form: form, form_id: formId, success_message: post_message %}
+    {% render 'form-status', form: form, form_id: formId, success_message: post_message %}
 {% endcomment %}
 {%- if form.posted_successfully? -%}
   <p class="form-message form-message--success" tabindex="-1" data-form-status>

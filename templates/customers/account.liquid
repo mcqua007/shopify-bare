@@ -38,7 +38,7 @@
 
         {% endif %}
         {%- if paginate.pages > 1 -%}
-            {% include 'pagination', paginate: paginate %}
+            {% render 'pagination', paginate: paginate %}
         {%- endif -%}
     {% endpaginate %}
     <h2>{{ 'customer.account.details' | t }}</h2>

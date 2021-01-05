@@ -39,8 +39,8 @@
   {%- endif -%}
 
  
-  {% include 'open-graph-tags' %}
-  {% include 'twitter-card' %}
+  {% render 'open-graph-tags' %}
+  {% render 'twitter-card' %}
 
   {{ content_for_header }}
 
@@ -81,7 +81,7 @@
     {% endif %}
 
     {% comment %} Main Navigation {% endcomment %}
-    {% include 'site-nav' %}
+    {% render 'site-nav' %}
 
   </header>
   <form action="/search" method="get" class="search-form right" role="search">

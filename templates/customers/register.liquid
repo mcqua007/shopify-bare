@@ -8,7 +8,7 @@
 
         {%- assign formId = 'RegisterForm' -%}
         {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
-          {% include 'form-status', form: form, form_id: formId %}
+          {% render 'form-status', form: form, form_id: formId %}
 
           <label for="{{ formId }}-FirstName">{{ 'customer.register.first_name' | t }}</label>
           <input type="text" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name">
