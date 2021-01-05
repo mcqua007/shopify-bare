@@ -2,6 +2,7 @@ const { task, src, dest, series, parallel, watch } = require('gulp');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
+const cssbeautify = require('gulp-cssbeautify');
 
 //needed for sass compiling
 var sass = require('gulp-sass');
@@ -25,6 +26,7 @@ exports.buildJS = buildJS;
 function buildCSS(cb){
   src('src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(cssbeautify())
     .pipe(dest('./dist/assets'));
   cb();
 }
