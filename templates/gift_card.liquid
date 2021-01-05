@@ -1,4 +1,3 @@
-{% layout 'gift_card' %}
 
 {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency -%}
 {%- assign formatted_initial_value_stripped = formatted_initial_value | strip_html -%}
