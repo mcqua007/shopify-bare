@@ -1,0 +1,17 @@
+{
+  "name": "shopify-brandhaus-naked-theme",
+  "version": "1.0.0",
+  "description": "Naked theme for shopify brandhaus theme",
+  "main": "",
+  "scripts": {
+    "start": "cd dist && theme open --env=development && theme watch --env=development",
+    "dev:deploy": "cd dist && theme depoly --env=development",
+    "dev:watch": "cd dist && theme watch --env=development",
+    "dev:open": "cd dist && theme open --env=development",
+    "dev:download": "cd dist && theme download --env=development",
+    "live:deploy": "cd dist && theme depoly --env=live",
+    "live:download": "cd dist && theme download --env=live"
+  },
+  "author": "Sean McQuaid",
+  "license": "ISC"
+}
