@@ -53,7 +53,7 @@ function watchFiles(){
      watch('src/js/**/*.js', buildJS);
      watch('src/sass/*.scss', buildCSS);
 }
-watchFiles.description = "Watching /src files..."
+watchFiles.description = "Watch /src files..."
 exports.watch = watchFiles;
 
 //export main task
