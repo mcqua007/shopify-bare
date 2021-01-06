@@ -5,6 +5,13 @@ const rename = require('gulp-rename');
 const cssbeautify = require('gulp-cssbeautify');
 const stripComments = require('gulp-strip-comments');
 const sourcemaps = require('gulp-sourcemaps');
+//used to purgeCss need to watch out for js and missing classes;
+//maybe I'll make it optional
+const purgecss = require('gulp-purgecss');
+
+
+
+//roll up required plugins
 const rollup = require('gulp-better-rollup');
 var  { nodeResolve } = require('@rollup/plugin-node-resolve'); //allow rollup to parse npm_modules
 var  commonjs = require('@rollup/plugin-commonjs'); //allow rollup to use npm_modiules by converting to es6 exports
@@ -39,12 +46,34 @@ function buildCSS(cb){
   src('src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(cssbeautify())
+    .pipe(purgecss({  //rejecting all right now
+     content: ['dist/**/*.liquid', 'src/js/**/*.js'] //parse liquid files to remove unused css
+    }))
     .pipe(dest('./dist/assets'));
   cb();
 }
 buildCSS.description = "generates css files";
 exports.buildCSS = buildCSS;
 
+//==============================
+// css rejected by purgecss
+//=============================
+function rejectedCSS(cb){
+  src('src/sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cssbeautify())
+    .pipe(purgecss({
+      content: ['dist/**/*.liquid', 'src/js/**/*.js'], //parse liquid files to remove unused css
+      rejected: true
+    }))
+     .pipe(rename({
+         suffix: '.rejected'
+     }))
+    .pipe(dest('./src/tmp'));
+  cb();
+}
+
+exports.rejectedCSS = rejectedCSS;
 //=======================
 //watching files
 //=======================
