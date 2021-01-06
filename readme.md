@@ -25,7 +25,7 @@ live:
 
 #### Commands ####
   List of commands you can use with npm:
- - `npm run dev` opens development theme preview link, start watcing src files, and starts theme kit watch
+ - `npm run dev` opens development theme preview link, start watching src files, and starts theme kit watch
  - `npm run dev:deploy` deploy your development theme
  - `npm run dev:watch` watch development theme,
  - `npm run dev:open` open preview link for development theme
@@ -42,13 +42,13 @@ live:
    └─ ...                     - where we edit liquid files
   src/                        - this src folder where we edit our js and sass files
    ├─ js/
-   │    ├─ modules/          - place to put javascript modules
-   │    ├─ main.js           - main js files used across site
-   │    └─ ...               - other pages of site js go here ie.e cart.js
-   ├─ sass/
-   │    ├─ modules/          - place to put scss modules
-   │    ├─ styles.scss       - main styles used across the site
-   │    ├─ _headers.scss     - example of partials starts with _
+   │    ├─ modules/           - place to put javascript modules
+   │    ├─ main.js            - main js files used across site
+   │    └─ ...                - other pages of site js go here ie.e cart.js
+   ├─ sass/ 
+   │    ├─ modules/           - place to put scss modules
+   │    ├─ styles.scss        - main styles used across the site
+   │    ├─ _headers.scss      - example of partials starts with _
    │    └─ ...     
    ├─ tmp/                    - used for temp output from gulp, i.e. rejected css          
    ├─ gulpfile.js             - use this to edit build pipelines if needed
