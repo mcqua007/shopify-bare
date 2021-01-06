@@ -4,7 +4,7 @@
   "description": "Naked theme for shopify brandhaus theme",
   "main": "",
   "scripts": {
-    "start": "(cd dist && theme open --env=development && theme watch --env=development) & gulp watch",
+    "dev": "(cd dist && theme open --env=development && theme watch --env=development) & gulp watch",
     "dev:deploy": "cd dist && theme depoly --env=development",
     "dev:watch": "(cd dist && theme watch --env=development) & gulp watch",
     "dev:open": "cd dist && theme open --env=development",
