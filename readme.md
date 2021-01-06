@@ -49,7 +49,8 @@ live:
    │    ├─ modules/          - place to put scss modules
    │    ├─ styles.scss       - main styles used across the site
    │    ├─ _headers.scss     - example of partials starts with _
-   │    └─ ...               
+   │    └─ ...     
+   ├─ tmp/                    - used for temp output from gulp, i.e. rejected css          
    ├─ gulpfile.js             - use this to edit build pipelines if needed
    └─ ... 
  ```
