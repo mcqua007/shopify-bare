@@ -32,3 +32,24 @@ live:
  - `dev:download` downlaod all development theme files,
  - `live:deploy` deploy to live (first must chage read only to fals - in config.yml",
  - `live:download` download all live theme files
+
+ #### Project Structure ####
+ ```
+  node_modules/
+  dist/
+   ├─ assets/                 - built css and js files  go here
+   ├─ config.yml              - where shopify's config file gets placed
+   └─ ...                     - where we edit liquid files
+  src/                        - this src folder where we edit our js and sass files
+   ├─ js/
+   │    ├─ modules/          - place to put javascript modules
+   │    ├─ main.js           - main js files used across site
+   │    └─ ...               - other pages of site js go here ie.e cart.js
+   ├─ sass/
+   │    ├─ modules/          - place to put scss modules
+   │    ├─ styles.scss       - main styles used across the site
+   │    ├─ _headers.scss     - example of partials starts with _
+   │    └─ ...               
+   ├─ gulpfile.js             - use this to edit build pipelines if needed
+   └─ ... 
+ ```
