@@ -1,7 +1,7 @@
 {
-  "name": "shopify-brandhaus-naked-theme",
+  "name": "shopify-bare",
   "version": "1.0.0",
-  "description": "Naked theme for shopify brandhaus theme",
+  "description": "Starter For Shopify Theme",
   "main": "",
   "scripts": {
     "dev": "(cd dist && theme open --env=development && theme watch --env=development) & gulp watch",
@@ -12,7 +12,7 @@
     "live:deploy": "cd dist && theme depoly --env=live",
     "live:download": "cd dist && theme download --env=live"
   },
-  "author": "Sean McQuaid",
+  "author": "mcqua007",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.10",
