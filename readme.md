@@ -28,9 +28,9 @@ live:
  - `npm run dev` opens development theme preview link, start watcing src files, and starts theme kit watch
  - `npm run dev:deploy` deploy your development theme
  - `npm run dev:watch` watch development theme,
- - `npm run dev:open` open preview link for development theme,
- - `npm run dev:download` downlaod all development theme files,
- - `npm run live:deploy` deploy to live (first must chage read only to fals - in `config.yml`,
+ - `npm run dev:open` open preview link for development theme
+ - `npm run dev:download` downlaod all development theme files
+ - `npm run live:deploy` deploy to live (first must chage read only to fals - in `config.yml`
  - `npm run live:download` download all live theme files
 
  #### Project Structure ####
