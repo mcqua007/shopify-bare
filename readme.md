@@ -61,7 +61,7 @@ live:
 
 #### PurgeCSS ####
 
- [PurgeCSS](https://purgecss.com/) looks at the .liquid files in the `/dist` folder as well as at .js files in /src/js/ folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the .js or .liquid files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `gulp rejectedCSS`. This will generated the related css files in `/src/tmp/`. 
+ [PurgeCSS](https://purgecss.com/) looks at the .liquid files in the `/dist` folder as well as at .js files in `/src/js/` folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the .js or .liquid files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `gulp rejectedCSS`. This will generated the related css files in `/src/tmp/`. 
 
  The way PurgeCSS parses js files is by making each word a selector. This is helpfull because it gets all css that needs to stay in stylesheets but sometimes can leave css that isn't being used (though this seems rare). 
 
