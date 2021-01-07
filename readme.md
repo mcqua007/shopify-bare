@@ -42,6 +42,7 @@ live:
  - `npm run dev:watch` watch development theme,
  - `npm run dev:open` open preview link for development theme
  - `npm run dev:download` downlaod all development theme files to `/dist`
+ - `npm run stage:deploy` deploys to development theme
  - `npm run stage` builds, deploys then opens preview to staging theme
  - `npm run stage:open` opens preview to staging theme
  - `npm run stage:deploy` deploys to staging theme
