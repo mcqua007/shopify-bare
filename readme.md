@@ -13,6 +13,16 @@ development:
   theme_id: [development_theme_id]
   password: [password]
   store: [store_url]
+   - assets/apigenerated_*.*
+   - snippets/apigenerated_*.*
+
+#staging config
+staging:
+  theme_id: [staging_theme_id]
+  password: [password]
+  store: [store_url]
+   - assets/apigenerated_*.*
+   - snippets/apigenerated_*.*
 
 #live/ production
 live:
@@ -20,6 +30,8 @@ live:
   password: [password]
   store: [store_url]
   read-only: true
+    - assets/apigenerated_*.*
+    - snippets/apigenerated_*.*
 ```
   Once you have the `config.yml` setup you can run `npm run dev` inside the projects root. This will start development on your dev theme by opening a preview link, starting themekit to watch for changes, and also start watching for changes in your `src/` folder.
 
@@ -29,9 +41,20 @@ live:
  - `npm run dev:deploy` deploy your development theme
  - `npm run dev:watch` watch development theme,
  - `npm run dev:open` open preview link for development theme
- - `npm run dev:download` downlaod all development theme files
+ - `npm run dev:download` downlaod all development theme files to `/dist`
+ - `npm run stage` builds, deploys then opens preview to staging theme
+ - `npm run stage:open` opens preview to staging theme
+ - `npm run stage:deploy` deploys to staging theme
+ - `npm run stage:download` downloads all staging files to `/dist`
  - `npm run live:deploy` deploy to live (first must chage read only to fals - in `config.yml`
- - `npm run live:download` download all live theme files
+ - `npm run live:download` download all live theme files to `/dist`
+ - `npm run build` generates production ready css and js
+ - `npm run build:dev` generates css and js with no minifier etc...
+ - `npm run build:staging` generates production ready css and js (same as npm run build)
+ - `npm run build:css` generates development css
+ - `npm run build:js` generates development js
+ - `npm run watch` auto generates development code as you make changes to src scss and js,
+ - `npm run log:purgedCSS` genrates unused css selectors that were purged 
 
  #### Project Structure ####
  ```

@@ -5,61 +5,93 @@ const rename = require('gulp-rename');
 const cssbeautify = require('gulp-cssbeautify');
 const stripComments = require('gulp-strip-comments');
 const sourcemaps = require('gulp-sourcemaps');
-//used to purgeCss need to watch out for js and missing classes;
-//maybe I'll make it optional
+const gulpif = require('gulp-if');
+const cleanCSS = require('gulp-clean-css');
 const purgecss = require('gulp-purgecss');
-
-
+const sass = require('gulp-sass');
+sass.compiler = require('node-sass');
 
 //roll up required plugins
 const rollup = require('gulp-better-rollup');
-var  { nodeResolve } = require('@rollup/plugin-node-resolve'); //allow rollup to parse npm_modules
-var  commonjs = require('@rollup/plugin-commonjs'); //allow rollup to use npm_modiules by converting to es6 exports
-var rollupJson  = require('@rollup/plugin-json'); //also used to use node mudules
+const { nodeResolve } = require('@rollup/plugin-node-resolve'); //allow rollup to parse npm_modules
+const commonjs = require('@rollup/plugin-commonjs'); //allow rollup to use npm_modiules by converting to es6 exports
+const rollupJson  = require('@rollup/plugin-json'); //also used to use node mudules
 
-//needed for sass compiling
-var sass = require('gulp-sass');
-sass.compiler = require('node-sass');
+//=============================
+// Configuration
+//=============================
 
-//=======================
-//build js files
-//=======================
+//main path ways
+var mainPaths ={
+  js: 'src/js/*.js',
+  scss: 'src/sass/*.scss',
+  dest: './dist/assets'
+}
 
-function buildJS(cb){
-  src('src/js/*.js')
+//=============================
+// CHANNELS - pipeline wrappers
+//=============================
+
+//js channel 
+function jsBuildChannel(srcPath, isStaging = false){
+ src(srcPath)
     .pipe(sourcemaps.init())
     .pipe(rollup({plugins: [commonjs(), nodeResolve({preferBuiltins: true, browser: true}), babel()]}, 'umd'))
     .pipe(stripComments())
-    //.pipe(uglify())
+    .pipe(gulpif(isStaging, uglify()))
     .pipe(rename({ extname: '.min.js' }))
-    .pipe(dest('./dist/assets'));
-    cb();
+    .pipe(dest(mainPaths.dest));
+
 }
-buildCSS.description = "generates js files";
-exports.buildJS = buildJS;
 
-//=======================
-//build css form scss
-//=======================
-
-function buildCSS(cb){
-  src('src/sass/*.scss')
+//css channel 
+function cssBuildChannel(srcPath, isStaging = false){
+  src(srcPath)
     .pipe(sass().on('error', sass.logError))
     .pipe(cssbeautify())
+    .pipe(gulpif(isStaging, cleanCSS()))
     .pipe(purgecss({  //rejecting all right now
      content: ['dist/**/*.liquid', 'src/js/**/*.js'] //parse liquid files to remove unused css
     }))
-    .pipe(dest('./dist/assets'));
-  cb();
+    .pipe(dest(mainPaths.dest));
 }
-buildCSS.description = "generates css files";
-exports.buildCSS = buildCSS;
 
-//==============================
-// css rejected by purgecss
 //=============================
-function rejectedCSS(cb){
-  src('src/sass/*.scss')
+// TASKS
+//=============================
+
+//build js files
+task("build", async ()=>{
+  jsBuildChannel(mainPaths.js);
+  cssBuildChannel(mainPaths.scss);
+});
+
+//build js files
+task("build:js", async ()=>{
+  jsBuildChannel(mainPaths.js);
+});
+
+//build css from scss
+task("build:css", async ()=>{
+  cssBuildChannel(mainPaths.scss);
+});
+
+//build with staging flag set to true
+task("build:staging", async ()=>{
+  jsBuildChannel(mainPaths.js, true);
+  cssBuildChannel(mainPaths.scss, true);
+});
+
+
+//watch /src files for changes then build
+task('watch', async ()=>{
+  watch('src/js/**/*.js', series('build:js'));
+  watch(mainPaths.scss, series('build:css'));
+});
+
+//shows the purged css selectors
+task('log:purgedCSS', async ()=>{
+  src(mainPaths.scss)
     .pipe(sass().on('error', sass.logError))
     .pipe(cssbeautify())
     .pipe(purgecss({
@@ -70,20 +102,6 @@ function rejectedCSS(cb){
          suffix: '.rejected'
      }))
     .pipe(dest('./src/tmp'));
-  cb();
-}
+});
 
-exports.rejectedCSS = rejectedCSS;
-//=======================
-//watching files
-//=======================
 
-function watchFiles(){
-     watch('src/js/**/*.js', buildJS);
-     watch('src/sass/*.scss', buildCSS);
-}
-watchFiles.description = "Watch /src files..."
-exports.watch = watchFiles;
-
-//export main task
-exports.default = parallel(buildCSS, buildJS);
