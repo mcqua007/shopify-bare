@@ -9,7 +9,7 @@
     "dev:watch": "(cd dist && theme watch --env=development) & gulp watch",
     "dev:open": "cd dist && theme open --env=development",
     "dev:download": "cd dist && theme download --env=development",
-    "dev:download": "cd dist && theme deploy--env=development",
+    "dev:deploy": "cd dist && theme deploy--env=development",
     "stage": "gulp build:staging && (cd dist && theme deploy --env=staging && theme open --env=staging)",
     "stage:build": "gulp build:staging",
     "stage:open": "cd dist && theme open --env=staging",
