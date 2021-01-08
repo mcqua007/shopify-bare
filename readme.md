@@ -80,7 +80,7 @@ live:
  ```
 #### Rollup ####
  [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
- We can import form node_modules but usually tree shaking doesn't work as well so the bundle size is larger. Rollup also has other plugins we can add as needed.
+ We can import form node_modules but usually tree shaking doesn't work as it used commonJS. You can read the difference [here](https://sazzer.github.io/blog/2015/05/12/Javascript-modules-ES5-vs-ES6/). Rollup also has other plugins we can add as needed.
  Rollup is configured in gulpfile.js
 
 #### PurgeCSS ####
