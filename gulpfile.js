@@ -8,6 +8,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const gulpif = require('gulp-if');
 const cleanCSS = require('gulp-clean-css');
 const purgecss = require('gulp-purgecss');
+const size = require('gulp-size');
 const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
@@ -40,6 +41,7 @@ function jsBuildChannel(srcPath, isStaging = false){
     .pipe(stripComments())
     .pipe(gulpif(isStaging, uglify()))
     .pipe(rename({ extname: '.min.js' }))
+    .pipe(size({showFiles: true}))
     .pipe(dest(mainPaths.dest));
 
 }
@@ -53,6 +55,8 @@ function cssBuildChannel(srcPath, isStaging = false){
     .pipe(purgecss({  //rejecting all right now
      content: ['dist/**/*.liquid', 'src/js/**/*.js'] //parse liquid files to remove unused css
     }))
+    .pipe(rename({ extname: '.min.css' }))
+    .pipe(size({showFiles: true}))
     .pipe(dest(mainPaths.dest));
 }
 
