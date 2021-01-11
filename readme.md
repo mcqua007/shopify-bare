@@ -85,7 +85,7 @@ live:
 
  The way PurgeCSS parses js files is by making each word a selector. This is helpfull because it gets all css that needs to stay in stylesheets but sometimes can leave css that isn't being used (though this seems rare). 
 
- **Example:** If we had no paragrpah tags in the .liquid files but had a pragraph as a selector for some stlyes i.e. ` p { color: red}`. We would want this removed because it isn't in use, but if we have a variable in js all named p (i.e. `var p = 2;`) it may not remove it from the css. 
+ **Example:** If we had no paragrpah tags in the .liquid files but had a pragraph as a selector for some styles i.e. ` p { color: red}`. We would want this removed because it isn't in use, but if we have a variable in js all named p (i.e. `var p = 2;`) it may not remove it from the css. 
 
 
 #### *Note ####
