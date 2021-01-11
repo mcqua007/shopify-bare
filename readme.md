@@ -6,7 +6,7 @@
 After cloning repo then `cd project-name` and run command `npm install`.
 This will install all of the build dependencies.
 
- Go to `dist/` folder and place your `config.yml` with the live theme and development theme (live should come after development):
+ Go to `dist/` folder and place your *`config.yml`* with the live theme and development theme (live should come after development):
 ```
 #development config
 development:
@@ -28,7 +28,7 @@ live:
   read-only: true
 
 ```
-  Once you have the `config.yml` setup you can run `npm run dev` inside the projects root. This will start development on your dev theme by opening a preview link, starting themekit to watch for changes, and also start watching for changes in your `src/` folder.
+  Once you have the *`config.yml`* setup you can run `npm run dev` inside the projects root. This will start development on your dev theme by opening a preview link, starting themekit to watch for changes, and also start watching for changes in your *`src/`* folder.
 
 #### Commands ####
   List of commands you can use with npm:
@@ -77,11 +77,11 @@ live:
 #### Rollup ####
  [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
  We can import form node_modules but usually tree shaking doesn't work as it used commonJS. You can read the difference [here](https://sazzer.github.io/blog/2015/05/12/Javascript-modules-ES5-vs-ES6/). Rollup also has other plugins we can add as needed.
- Rollup is configured in gulpfile.js
+ Rollup is configured in `*gulpfile.js`*
 
 #### PurgeCSS ####
 
- [PurgeCSS](https://purgecss.com/) looks at the *.liquid* files in the *`/dist`* folder as well as at .js files in `/src/js/` folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the .js or .liquid files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `gulp rejectedCSS`. This will generated the related css files in `/src/tmp/`. 
+ [PurgeCSS](https://purgecss.com/) looks at the **.liquid** files in the *`/dist`* folder as well as at **.js** files in *`/src/js/`* folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the .js or .liquid files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `gulp rejectedCSS`. This will generated the related css files in *`/src/tmp/`*. 
 
  The way PurgeCSS parses js files is by making each word a selector. This is helpfull because it gets all css that needs to stay in stylesheets but sometimes can leave css that isn't being used (though this seems rare). 
 
@@ -89,7 +89,7 @@ live:
 
 
 #### *Note ####
- I got the shopify theme files (`/dist/`) from antoher repo but it looked a bit old. I tried to cleanup the files and include all the minimum required files that shopify needs.
- You can replaced the entire contents of the `/dist` folder with any shopify starter theme. Just make sure it's the sam estructure(ie.e /dist/assets, /dist/snippets etc...).Please let me know if I missing any files or base code that is needed. 
+ I got the shopify theme files (*`/dist/`*) from antoher repo but it looked a bit old. I tried to cleanup the files and include all the minimum required files that shopify needs.
+ You can replaced the entire contents of the *`/dist`* folder with any shopify starter theme. Just make sure it's the sam estructure(i.e. *`/dist/assets`*, *`/dist/snippets`*,  etc...).Please let me know if I missing any files or base code that is needed. 
  
  P.S. I currently don't have the `layout/checkout.liquid` since that's for *Shopify Plus+* only.
