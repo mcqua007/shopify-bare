@@ -81,7 +81,7 @@ live:
 
 #### PurgeCSS ####
 
- [PurgeCSS](https://purgecss.com/) looks at the .liquid files in the `/dist` folder as well as at .js files in `/src/js/` folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the .js or .liquid files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `gulp rejectedCSS`. This will generated the related css files in `/src/tmp/`. 
+ [PurgeCSS](https://purgecss.com/) looks at the *.liquid* files in the *`/dist`* folder as well as at .js files in `/src/js/` folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the .js or .liquid files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `gulp rejectedCSS`. This will generated the related css files in `/src/tmp/`. 
 
  The way PurgeCSS parses js files is by making each word a selector. This is helpfull because it gets all css that needs to stay in stylesheets but sometimes can leave css that isn't being used (though this seems rare). 
 
@@ -89,5 +89,7 @@ live:
 
 
 #### *Note ####
- I got the shopify theme files form antoher repo but it looked a bit old. I tired to cleanup the files and include all the minimum required files.
- You can replaced the entire dist folder with any shopify starter theme. Please let me know if I missing any files or base code that is needed. Currently don't have the `layout/checkout.liquid` since that's for shopify plus only.
+ I got the shopify theme files (`/dist/`) from antoher repo but it looked a bit old. I tried to cleanup the files and include all the minimum required files that shopify needs.
+ You can replaced the entire contents of the `/dist` folder with any shopify starter theme. Just make sure it's the sam estructure(ie.e /dist/assets, /dist/snippets etc...).Please let me know if I missing any files or base code that is needed. 
+ 
+ P.S. I currently don't have the `layout/checkout.liquid` since that's for *Shopify Plus+* only.
