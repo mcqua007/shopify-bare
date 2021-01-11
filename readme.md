@@ -49,7 +49,8 @@ live:
  - `npm run build:staging` generates production ready css and js (same as npm run build)
  - `npm run build:css` generates development css
  - `npm run build:js` generates development js
- - `npm run watch` auto generates development code as you make changes to src scss and js,
+ - `npm run watch:src` auto generates development code as you make changes to `/src` scss and js,
+ - `npm run watch:dist` start theme kit watch on `/dist` files to update theme on shopify
  - `npm run log:purgedCSS` genrates unused css selectors that were purged 
 
  #### Project Structure ####

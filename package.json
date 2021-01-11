@@ -21,7 +21,8 @@
     "build:css": "gulp build:css",
     "build:js": "gulp build:js",
     "log:purgedCSS": "gulp log:purgedCSS",
-    "watch": "gulp watch"
+    "watch:src": "gulp watch",
+    "watch:dist": "cd dist && theme watch --env=development"
   },
   "author": "mcqua007",
   "license": "ISC",
