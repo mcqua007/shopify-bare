@@ -2,7 +2,7 @@
 
  **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed.
  
- #### Configuration ####
+ ### Configuration ###
 After cloning repo then `cd project-name` and run command `npm install`.
 This will install all of the build dependencies.
 
@@ -30,7 +30,7 @@ live:
 ```
   Once you have the *`config.yml`* setup you can run `npm run dev` inside the projects root. This will start development on your dev theme by opening a preview link, starting themekit to watch for changes, and also start watching for changes in your *`src/`* folder.
 
-#### Commands ####
+### Commands ###
   List of commands you can use with npm:
  - `npm run dev` opens development theme preview link, start watching src files, and starts theme kit watch
  - `npm run dev:deploy` deploy your development theme
@@ -53,7 +53,7 @@ live:
  - `npm run watch:dist` start theme kit watch on `/dist` files to update theme on shopify
  - `npm run log:purgedCSS` genrates unused css selectors that were purged 
 
- #### Project Structure ####
+ ### Project Structure ###
  ```
   node_modules/
   dist/
@@ -74,12 +74,12 @@ live:
    ├─ gulpfile.js             - use this to edit build pipelines if needed
    └─ ... 
  ```
-#### Rollup ####
+### Rollup ###
  [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
  We can import form node_modules but usually tree shaking doesn't work as it used commonJS. You can read the difference [here](https://sazzer.github.io/blog/2015/05/12/Javascript-modules-ES5-vs-ES6/). Rollup also has other plugins we can add as needed.
  Rollup is configured in `*gulpfile.js`*
 
-#### PurgeCSS ####
+### PurgeCSS ###
 
  [PurgeCSS](https://purgecss.com/) looks at the **.liquid** files in the *`/dist`* folder as well as at **.js** files in *`/src/js/`* folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the **.js** or **.liquid** files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `gulp rejectedCSS`. This will generated the related css files in *`/src/tmp/`*. 
 
@@ -88,7 +88,7 @@ live:
  **Example:** If we had no paragrpah tags in the .liquid files but had a pragraph as a selector for some styles i.e. ` p { color: red}`. We would want this removed because it isn't in use, but if we have a variable in js all named p (i.e. `var p = 2;`) it may not remove it from the css. 
 
 
-#### *Note ####
+### *Note ###
  I got the shopify theme files (*`/dist/`*) from antoher repo but it looked a bit old. I tried to cleanup the files and include all the minimum required files that shopify needs.
  You can replaced the entire contents of the *`/dist`* folder with any shopify starter theme. Just make sure it's the sam estructure(i.e. *`/dist/assets`*, *`/dist/snippets`*,  etc...).Please let me know if I missing any files or base code that is needed. 
  
