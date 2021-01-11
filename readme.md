@@ -92,4 +92,4 @@ live:
  I got the shopify theme files (*`/dist/`*) from antoher repo but it looked a bit old. I tried to cleanup the files and include all the minimum required files that shopify needs.
  You can replaced the entire contents of the *`/dist`* folder with any shopify starter theme. Just make sure it's the sam estructure(i.e. *`/dist/assets`*, *`/dist/snippets`*,  etc...).Please let me know if I missing any files or base code that is needed. 
  
- P.S. I currently don't have the `layout/checkout.liquid` since that's for *Shopify Plus+* only.
+ P.S. I currently don't have the *`layout/checkout.liquid`* since that's for *Shopify Plus+* only.
