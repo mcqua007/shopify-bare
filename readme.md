@@ -13,16 +13,12 @@ development:
   theme_id: [development_theme_id]
   password: [password]
   store: [store_url]
-   - assets/apigenerated_*.*
-   - snippets/apigenerated_*.*
 
 #staging config
 staging:
   theme_id: [staging_theme_id]
   password: [password]
   store: [store_url]
-   - assets/apigenerated_*.*
-   - snippets/apigenerated_*.*
 
 #live/ production
 live:
@@ -30,8 +26,7 @@ live:
   password: [password]
   store: [store_url]
   read-only: true
-    - assets/apigenerated_*.*
-    - snippets/apigenerated_*.*
+
 ```
   Once you have the `config.yml` setup you can run `npm run dev` inside the projects root. This will start development on your dev theme by opening a preview link, starting themekit to watch for changes, and also start watching for changes in your `src/` folder.
 
