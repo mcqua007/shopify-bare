@@ -49,7 +49,7 @@ live:
  - `npm run build:staging` generates production ready css and js (same as npm run build)
  - `npm run build:css` generates development css
  - `npm run build:js` generates development js
- - `npm run watch:src` auto generates development code as you make changes to `/src` scss and js,
+ - `npm run watch:src` auto generates development code as you make changes to `/src` scss and js
  - `npm run watch:dist` start theme kit watch on `/dist` files to update theme on shopify
  - `npm run log:purgedCSS` genrates unused css selectors that were purged 
 
@@ -86,3 +86,8 @@ live:
  The way PurgeCSS parses js files is by making each word a selector. This is helpfull because it gets all css that needs to stay in stylesheets but sometimes can leave css that isn't being used (though this seems rare). 
 
  **Example:** If we had no paragrpah tags in the .liquid files but had a pragraph as a selector for some stlyes i.e. ` p { color: red}`. We would want this removed because it isn't in use, but if we have a variable in js all named p (i.e. `var p = 2;`) it may not remove it from the css. 
+
+
+#### *Note ####
+ I got the shopify theme files form antoher repo but it looked a bit old. I tired to cleanup the files and include all the minimum required files.
+ You can replaced the entire dist folder with any shopify starter theme. Please let me know if I missing any files or base code that is needed. Currently don't have the `layout/checkout.liquid` since that's for shopify plus only.
