@@ -10,7 +10,7 @@ const cleanCSS = require('gulp-clean-css');
 const purgecss = require('gulp-purgecss');
 const size = require('gulp-size');
 const sass = require('gulp-sass');
-sass.compiler = require('node-sass');
+sass.compiler = require('sass');
 
 //roll up required plugins
 const rollup = require('gulp-better-rollup');
@@ -90,7 +90,7 @@ task("build:staging", async ()=>{
 //watch /src files for changes then build
 task('watch', async ()=>{
   watch('src/js/**/*.js', series('build:js'));
-  watch(mainPaths.scss, series('build:css'));
+  watch('src/sass/**/*.scss', series('build:css'));
 });
 
 //shows the purged css selectors
