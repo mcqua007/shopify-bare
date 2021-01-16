@@ -16,7 +16,9 @@ sass.compiler = require('sass');
 const rollup = require('gulp-better-rollup');
 const { nodeResolve } = require('@rollup/plugin-node-resolve'); //allow rollup to parse npm_modules
 const commonjs = require('@rollup/plugin-commonjs'); //allow rollup to use npm_modiules by converting to es6 exports
-const rollupJson  = require('@rollup/plugin-json'); //also used to use node mudules
+const rollupJson  = require('@rollup/plugin-json'); //also used to use node modules
+// const babel = require('@rollup/plugin-babel');
+
 
 //=============================
 // Configuration
@@ -37,7 +39,10 @@ var mainPaths ={
 function jsBuildChannel(srcPath, isStaging = false){
  src(srcPath)
     .pipe(sourcemaps.init())
-    .pipe(rollup({plugins: [commonjs(), nodeResolve({preferBuiltins: true, browser: true}), babel()]}, 'iife'))
+     .pipe(babel({
+            presets: ['@babel/env']
+      }))
+    .pipe(rollup({plugins: [commonjs(), nodeResolve({preferBuiltins: true, browser: true})]}, 'iife'))
     .pipe(stripComments())
     .pipe(gulpif(isStaging, terser()))
     .pipe(rename({ extname: '.min.js' }))
