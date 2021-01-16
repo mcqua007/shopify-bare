@@ -40,7 +40,7 @@ function jsBuildChannel(srcPath, isStaging = false){
  src(srcPath)
     .pipe(sourcemaps.init())
      .pipe(babel({
-            presets: ['@babel/env']
+            presets: ['@babel/preset-env']
       }))
     .pipe(rollup({plugins: [commonjs(), nodeResolve({preferBuiltins: true, browser: true})]}, 'iife'))
     .pipe(stripComments())
