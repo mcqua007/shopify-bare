@@ -1,6 +1,6 @@
 const { task, src, dest, series, parallel, watch } = require('gulp');
 const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
+const terser = require('gulp-terser');
 const rename = require('gulp-rename');
 const cssbeautify = require('gulp-cssbeautify');
 const stripComments = require('gulp-strip-comments');
@@ -39,7 +39,7 @@ function jsBuildChannel(srcPath, isStaging = false){
     .pipe(sourcemaps.init())
     .pipe(rollup({plugins: [commonjs(), nodeResolve({preferBuiltins: true, browser: true}), babel()]}, 'iife'))
     .pipe(stripComments())
-    .pipe(gulpif(isStaging, uglify()))
+    .pipe(gulpif(isStaging, terser()))
     .pipe(rename({ extname: '.min.js' }))
     .pipe(size({showFiles: true}))
     .pipe(dest(mainPaths.dest));
