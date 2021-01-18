@@ -60,19 +60,19 @@ live:
  │   ├─ assets/                   - built css and js files  go here
  │   ├─ config.yml                - where shopify's config file gets placed
  │   └─ ...                       - where we edit liquid files
- ├─  src/                          - this src folder where we edit our js and sass files
+ ├─  src/                         - this src folder where we edit our js and sass files
  │    ├─ js/
- │    │    ├─ modules/           - place to put javascript modules
- │    │    ├─ main.js            - main js files used across site
- │    │    └─ ...                - other pages of site js go here ie.e cart.js
+ │    │   ├─ modules/             - place to put javascript modules
+ │    │   ├─ main.js              - main js files used across site
+ │    │   └─ ...                  - other pages of site js go here ie.e cart.js
  │    ├─ sass/ 
- │    │    ├─ modules/           - place to put scss modules
- │    │    ├─ styles.scss        - main styles used across the site
- │    │    ├─ _headers.scss      - example of partials starts with _
- │    │    └─ ...     
+ │    │   ├─ modules/             - place to put scss modules
+ │    │   ├─ styles.scss          - main styles used across the site
+ │    │   ├─ _headers.scss        - example of partials starts with _
+ │    │   └─ ...     
  │    └─ tmp/                     - used for temp output from gulp, i.e. rejected css          
  │  
- ├─ gulpfile.js                    - use this to edit build pipelines if needed
+ ├─ gulpfile.js                   - use this to edit build pipelines if needed
  └─  ... 
  ```
 ### Rollup ###
