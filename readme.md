@@ -57,7 +57,7 @@ live:
 
  ### Project Structure ###
  ```
- ├─  node_modules/
+ ├─ node_modules/
  ├─ dist/
  │   ├─ assets/                   - built css and js files  go here
  │   ├─ config.yml                - where shopify's config file gets placed
