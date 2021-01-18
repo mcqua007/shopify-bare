@@ -1,6 +1,7 @@
  ## Getting Started ##
  **Why?**: This was built as a starter theme to bring modern build tools into Shopify development since Shopfiy Slate has been deprecated. 
  This starter theme is as stripped down as possible so you can start with a blank canvas. Enjoy.
+ 
  **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed.
  
  ### Configuration ###
