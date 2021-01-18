@@ -55,24 +55,25 @@ live:
 
  ### Project Structure ###
  ```
-  node_modules/
-  dist/
-   ├─ assets/                 - built css and js files  go here
-   ├─ config.yml              - where shopify's config file gets placed
-   └─ ...                     - where we edit liquid files
-  src/                        - this src folder where we edit our js and sass files
-   ├─ js/
-   │    ├─ modules/           - place to put javascript modules
-   │    ├─ main.js            - main js files used across site
-   │    └─ ...                - other pages of site js go here ie.e cart.js
-   ├─ sass/ 
-   │    ├─ modules/           - place to put scss modules
-   │    ├─ styles.scss        - main styles used across the site
-   │    ├─ _headers.scss      - example of partials starts with _
-   │    └─ ...     
-   └─ tmp/                    - used for temp output from gulp, i.e. rejected css          
-  gulpfile.js                 - use this to edit build pipelines if needed
-  ... 
+ ├─  node_modules/
+ ├─ dist/
+ │   ├─ assets/                   - built css and js files  go here
+ │   ├─ config.yml                - where shopify's config file gets placed
+ │   └─ ...                       - where we edit liquid files
+ ├─  src/                          - this src folder where we edit our js and sass files
+ │    ├─ js/
+ │    │    ├─ modules/           - place to put javascript modules
+ │    │    ├─ main.js            - main js files used across site
+ │    │    └─ ...                - other pages of site js go here ie.e cart.js
+ │    ├─ sass/ 
+ │    │    ├─ modules/           - place to put scss modules
+ │    │    ├─ styles.scss        - main styles used across the site
+ │    │    ├─ _headers.scss      - example of partials starts with _
+ │    │    └─ ...     
+ │    └─ tmp/                     - used for temp output from gulp, i.e. rejected css          
+ │  
+ ├─ gulpfile.js                    - use this to edit build pipelines if needed
+ └─  ... 
  ```
 ### Rollup ###
  [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
