@@ -1,5 +1,5 @@
  ## Getting Started ##
-
+ **Features**: THis 
  **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed.
  
  ### Configuration ###
@@ -70,9 +70,9 @@ live:
    │    ├─ styles.scss        - main styles used across the site
    │    ├─ _headers.scss      - example of partials starts with _
    │    └─ ...     
-   ├─ tmp/                    - used for temp output from gulp, i.e. rejected css          
-   ├─ gulpfile.js             - use this to edit build pipelines if needed
-   └─ ... 
+   └─ tmp/                    - used for temp output from gulp, i.e. rejected css          
+  gulpfile.js                 - use this to edit build pipelines if needed
+  ... 
  ```
 ### Rollup ###
  [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
