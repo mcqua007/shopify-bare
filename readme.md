@@ -1,7 +1,7 @@
  ## Getting Started ##
  **Why?**: This was built as a starter theme to bring modern build tools into Shopify development since Shopfiy Slate has been deprecated. 
  This starter theme is as stripped down as possible so you can start with a blank canvas. Enjoy.
- 
+
  **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed.
  
  ### Configuration ###
@@ -69,8 +69,9 @@ live:
  │    │   └─ ...                  - other pages of site js go here ie.e cart.js
  │    ├─ sass/ 
  │    │   ├─ modules/             - place to put scss modules
+ │    │   │   └─ _headers.scss    - example of partials starts with _
  │    │   ├─ styles.scss          - main styles used across the site
- │    │   ├─ _headers.scss        - example of partials starts with _
+ │    │   ├─ product.scss         - example of template page sass
  │    │   └─ ...     
  │    └─ tmp/                     - used for temp output from gulp, i.e. rejected css          
  │  
