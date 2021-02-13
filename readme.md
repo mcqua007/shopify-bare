@@ -51,6 +51,7 @@ live:
  - `npm run build:staging` generates production ready css and js (same as npm run build)
  - `npm run build:css` generates development css
  - `npm run build:js` generates development js
+ - `npm run build:img` compresses images in /src/images and places in assets
  - `npm run watch:src` auto generates development code as you make changes to `/src` scss and js
  - `npm run watch:dist` start theme kit watch on `/dist` files to update theme on shopify
  - `npm run log:purgedCSS` genrates unused css selectors that were purged 
@@ -63,6 +64,9 @@ live:
  │   ├─ config.yml                - where shopify's config file gets placed
  │   └─ ...                       - where we edit liquid files
  ├─  src/                         - this src folder where we edit our js and sass files
+ │    ├─ images/                  - put images here for compression
+ │    │   ├─ placeholder.png      
+ │    │   └─ ...                  - other images
  │    ├─ js/
  │    │   ├─ modules/             - place to put javascript modules
  │    │   ├─ main.js              - main js files used across site
@@ -73,7 +77,9 @@ live:
  │    │   ├─ styles.scss          - main styles used across the site
  │    │   ├─ product.scss         - example of template page sass
  │    │   └─ ...     
- │    └─ tmp/                     - used for temp output from gulp, i.e. rejected css          
+ │    └─ tmp/                     - used for temp output from gulp, i.e. rejected css
+ │    │   ├─ styles.rejected.css  - shows all selectors that were purged from styles.scss
+ │    │   └─ ...                  - other purged files       
  │  
  ├─ gulpfile.js                   - use this to edit build pipelines if needed
  └─  ... 
