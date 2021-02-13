@@ -9,6 +9,7 @@ const gulpif = require('gulp-if');
 const cleanCSS = require('gulp-clean-css');
 const purgecss = require('gulp-purgecss');
 const size = require('gulp-size');
+const imagemin = require('gulp-imagemin');
 const sass = require('gulp-sass');
 sass.compiler = require('sass');
 
@@ -25,15 +26,27 @@ const rollupJson  = require('@rollup/plugin-json'); //also used to use node modu
 //=============================
 
 //main path ways
-var mainPaths ={
-  js: 'src/js/*.js',
-  scss: 'src/sass/*.scss',
+var config={
+  rootImg: 'src/images/*',
+  rootJS: 'src/js/*.js',
+  deepJS: 'src/js/**/*.js',
+  rootSass: 'src/sass/*.scss',
+  deepSass: 'src/sass/**/*.scss',
+  liquid: 'dist/**/*.liquid',
   dest: './dist/assets'
 }
 
 //=============================
 // CHANNELS - pipeline wrappers
 //=============================
+
+//image build path
+function imageBuildChannel(srcPath) {
+  src(srcPath)
+  .pipe(imagemin({verbose: true}))
+  .pipe(size({ showFiles: true }))
+  .pipe(dest(config.dest));
+}
 
 //js channel 
 function jsBuildChannel(srcPath, isStaging = false){
@@ -47,7 +60,7 @@ function jsBuildChannel(srcPath, isStaging = false){
     .pipe(gulpif(isStaging, terser()))
     .pipe(rename({ extname: '.min.js' }))
     .pipe(size({showFiles: true}))
-    .pipe(dest(mainPaths.dest));
+    .pipe(dest(config.dest));
 
 }
 
@@ -58,11 +71,11 @@ function cssBuildChannel(srcPath, isStaging = false){
     .pipe(cssbeautify())
     .pipe(gulpif(isStaging, cleanCSS()))
     .pipe(purgecss({  //rejecting all right now
-     content: ['dist/**/*.liquid', 'src/js/**/*.js'] //parse liquid files to remove unused css
+     content: [config.liquid, config.deepJS] //parse liquid files to remove unused css
     }))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(size({showFiles: true}))
-    .pipe(dest(mainPaths.dest));
+    .pipe(dest(config.dest));
 }
 
 //=============================
@@ -71,40 +84,48 @@ function cssBuildChannel(srcPath, isStaging = false){
 
 //build js files
 task("build", async ()=>{
-  jsBuildChannel(mainPaths.js);
-  cssBuildChannel(mainPaths.scss);
+  jsBuildChannel(config.rootJS);
+  cssBuildChannel(config.rootSass);
 });
+
+//compress images
+ //build css from scss
+ task('build:img', async () => {
+  imageBuildChannel([config.rootImg]);
+});
+
 
 //build js files
 task("build:js", async ()=>{
-  jsBuildChannel(mainPaths.js);
+  jsBuildChannel(config.rootJS);
 });
 
 //build css from scss
 task("build:css", async ()=>{
-  cssBuildChannel(mainPaths.scss);
+  cssBuildChannel(config.rootSass);
 });
 
 //build with staging flag set to true
 task("build:staging", async ()=>{
-  jsBuildChannel(mainPaths.js, true);
-  cssBuildChannel(mainPaths.scss, true);
+  jsBuildChannel(config.rootJS, true);
+  cssBuildChannel(config.rootSass, true);
 });
 
 
 //watch /src files for changes then build
 task('watch', async ()=>{
-  watch('src/js/**/*.js', series('build:js'));
-  watch('src/sass/**/*.scss', series('build:css'));
+  watch(config.deepJS, series('build:js'));
+  watch(config.deepSass, series('build:css'));
+  watch(config.rootImg, series('build:img'));
 });
 
 //shows the purged css selectors
 task('log:purgedCSS', async ()=>{
-  src(mainPaths.scss)
+  src(config.rootSass)
     .pipe(sass().on('error', sass.logError))
     .pipe(cssbeautify())
     .pipe(purgecss({
-      content: ['dist/**/*.liquid', 'src/js/**/*.js'], //parse liquid files to remove unused css
+      content: [config.liquid, config.deepJS], //parse liquid files to remove unused css
       rejected: true
     }))
      .pipe(rename({
