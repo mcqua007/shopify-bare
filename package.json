@@ -34,7 +34,6 @@
     "@rollup/plugin-node-resolve": "^11.0.1",
     "cli-confirm": "^1.0.1",
     "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
     "gulp-better-rollup": "^4.0.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-cssbeautify": "^3.0.0",
@@ -50,6 +49,5 @@
     "gulp-watch": "^5.0.1",
     "rollup": "^2.36.0",
     "sass": "^1.32.4"
-  },
-  "dependencies": {}
+  }
 }
