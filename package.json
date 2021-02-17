@@ -14,7 +14,7 @@
     "stage:open": "cd dist && theme open --env=staging",
     "stage:deploy": "cd dist && theme deploy --env=staging",
     "stage:download": "cd dist && theme download --env=staging",
-    "live:deploy": "cli-confirm \"Do you really want to deploy to the LIVE theme ? [y/n]\" && (cd dist && theme deploy --env=live)",
+    "live:deploy": "cli-confirm \"\u001b[1;33m Do you really want to deploy to the\u001b[0;32m LIVE \u001b[1;33mtheme ? [y/n]\u001b[0m \" && (cd dist && theme deploy --env=live)",
     "live:download": "cd dist && theme download --env=live",
     "build": "gulp build",
     "build:staging": "gulp build:staging",
