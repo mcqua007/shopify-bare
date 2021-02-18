@@ -7,7 +7,7 @@
 The intended workflow of this project is to have 3 themes. Live(production), Staging, and Development. Once you have these 3 theme id's you can put them into the config as outlined below. 
 
 The process:
- 1. First youshould be run `npm run dev` which will open a preview link, start theme watch on  your *`/dist`* files, and start watching for changes in your *`/src`* files. 
+ 1. First you should be run `npm run dev` which will open a preview link, start theme watch on  your *`/dist`* files, and start watching for changes in your *`/src`* files. 
  
  2. Once your changes look good on development the next step is to run `npm run stage`. This builds your files in production mode and deploys them to your staging theme. Then opens a preview to make sure changes are stable there. 
  
