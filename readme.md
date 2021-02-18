@@ -15,11 +15,10 @@ The process:
  
  P.S. This project doesn't give you the command to watch live even though theme kit allows you to. You really should never watch live.
 
- **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed.
+ **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed. This should work for the latest versions of each but for trouble shooting I have the falling versions: npm(7.5.4) | node(v12.16.1) | gulp(CLI version: 2.3.0,Local version: 4.0.2) | ThemeKit (1.1.6 darwin/amd64)
  
  ### Configuration ###
-After cloning repo then `cd project-name` and run command `npm install`.
-This will install all of the build dependencies.
+ I fyou have all pre-requisites install from above then go ahead and download the latest release. After downloading the release/repo then `cd project-name` and run command `npm install`. This will install all of the development dependencies.
 
  Go to `dist/` folder and place your *`config.yml`* with the live theme and development theme (live should come after development):
 ```
