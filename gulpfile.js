@@ -74,7 +74,8 @@ function cssBuildChannel(srcPath, isStaging = false) {
     )
     .pipe(rename({ extname: '.min.css' }))
     .pipe(size({ showFiles: true }))
-    .pipe(dest(config.dest));
+    .pipe(dest(config.dest))
+    .pipe(touch());
 }
 
 //=============================
