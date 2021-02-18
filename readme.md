@@ -102,7 +102,7 @@ live:
  This one isn't really that big of deal but, at this, I'm not watching the .liquid files with Gulp. This means JS and CSS builds don't get triggered when you only make a change to a *`.liquid`* file. Most of the time this is not an issue. The only issue I have noticed is if a CSS selector or class is purged and then you add it to a .liquid file to use then you have to trigger a CSS rebuild. The other solution is to have gulp rebuild CSS and possibly JS src files upon each *`.liquid`* file change. If you want to do this go to line 118 in *`gulpfile.js`* and change it to this `watch(config.deepSass, config.liquid, series('build:css'));`
 
 ### *Note ###
- I got the shopify theme files (*`/dist/`*) from antoher repo but it looked a bit old. I tried to cleanup the files and include all the minimum required files that shopify needs.
- You can replaced the entire contents of the *`/dist`* folder with any shopify starter theme. Just make sure it's the sam estructure(i.e. *`/dist/assets`*, *`/dist/snippets`*,  etc...).Please let me know if I missing any files or base code that is needed. 
+ I got the shopify theme files (*`/dist/`*) from another git repo. I tried to clean up the files and include all the minimum required files that shopify needs. 
+ You can replaced the entire contents of the *`/dist`* folder with any shopify starter theme. Just make sure it's the same structure(i.e. *`/dist/assets`*, *`/dist/snippets`*,  etc...).Please let me know if I missing any files or base code that is needed. 
  
- P.S. I currently don't have the *`layout/checkout.liquid`* since that's for *Shopify Plus+* only.
+ P.S. I currently don't have the *`layout/checkout.liquid`* since that's for *Shopify Plus+* only. You can also add this yourself.
