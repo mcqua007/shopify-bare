@@ -1,6 +1,19 @@
  ## Getting Started ##
- **Why?**: This was built as a starter theme to bring modern build tools into Shopify development since Shopfiy Slate has been deprecated. 
- This starter theme is as stripped down as possible so you can start with a blank canvas. Enjoy.
+ **Why?**: This was built as a starter theme to bring modern build tools and a modern workflow into Shopify development since Shopfiy Slate has been deprecated. 
+ This starter theme is as stripped down as much as possible so you can start with a blank canvas.
+
+ **Workflow**: We all know shopify doesn't support local development. This means the usually work flow starts with you going to your shopify store, duplicating the live theme, grabbing the id, then running `theme watch` to start watching your files for changes you make. Some people may watch their live theme directly, but what happens if the wrong branch or code gets uploaded to your live theme? You are screwed. 
+ 
+The intended workflow of this project is to have 3 themes. Live(production), Staging, and Development. Once you have these 3 theme id's you can put them into the config as outlined below. 
+
+The process:
+ 1. First youshould be run `npm run dev` which will open a preview link, start theme watch on  your *`/dist`* files, and start watching for changes in your *`/src`* files. 
+ 
+ 2. Once your changes look good on development the next step is to run `npm run stage`. This builds your files in production mode and deploys them to your staging theme. Then opens a preview to make sure changes are stable there. 
+ 
+ 3. Once you have verified the changes. You can deploy to live by running `npm run live:deploy`, this will confirm you actually want to deploy to live, enter y and watch your changes go live. 
+ 
+ P.S. This project doesn't give you the command to watch live even though theme kit allows you to. You really should never watch live.
 
  **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed.
  
