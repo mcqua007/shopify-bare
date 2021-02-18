@@ -100,8 +100,9 @@ live:
 ### *Caveats ###
 I wanted to address a few things I have noticed thus far. 
 
-  1. First, seems to be something between Theme Kit's Watch and Rollup. I'm using gulp-better-rollup as a wrapper around rollup to make it easier to use with gulp. With this, I have noticed that if I make a change in a JS dependency (ex. a module being imported in main.js or antoher entry file) the files get built but Theme Kit Watch doesn't catch it. I have to go into main.js and hit save to trigger Theme Kit to catch the changes. This in itself isn't a game-changer but is kind of annoying and something I'm looking to fix. The fix might include using regular rollup or a different gulp rollup wrapper. My guess is whatever Theme Kit is watching is not being changed when only a dependency changes.
+  1. **FIXED** First, seems to be something between Theme Kit's Watch and Rollup. I'm using gulp-better-rollup as a wrapper around rollup to make it easier to use with gulp. With this, I have noticed that if I make a change in a JS dependency (ex. a module being imported in main.js or antoher entry file) the files get built but Theme Kit Watch doesn't catch it. I have to go into main.js and hit save to trigger Theme Kit to catch the changes. 
 
+  Fixed by using gulp-touch-custom to edit modify file data to current time when build is run. 
 
 2. This one isn't really on the same level as the above but something I would like to mention. At this, I'm not watching the .liquid files with Gulp. This means JS and CSS builds don't get triggered when you only make a change to a *`.liquid`* file. Most of the time this is not an issue. The only issue I have noticed is if a CSS selector or class is purged and then you add it to a .liquid file to use then you have to trigger a CSS rebuild. The other solution is to have gulp rebuild CSS and possibly JS src files upon each *`.liquid`* file change. If you want to do this go to line 118 in *`gulpfile.js`* and change it to this `watch(config.deepSass, config.liquid, series('build:css'));`
 

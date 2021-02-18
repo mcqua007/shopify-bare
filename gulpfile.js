@@ -11,6 +11,7 @@ const size = require('gulp-size');
 const imagemin = require('gulp-imagemin');
 const sass = require('gulp-sass');
 sass.compiler = require('sass');
+const touch = require('gulp-touch-custom');
 
 //roll up required plugins
 const rollup = require('gulp-better-rollup');
@@ -55,7 +56,8 @@ function jsBuildChannel(srcPath, isStaging = false) {
     .pipe(gulpif(isStaging, terser()))
     .pipe(rename({ extname: '.min.js' }))
     .pipe(size({ showFiles: true }))
-    .pipe(dest(config.dest));
+    .pipe(dest(config.dest))
+    .pipe(touch());
 }
 
 //css channel
