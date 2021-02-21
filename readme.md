@@ -37,10 +37,12 @@ live:
  - `npm run dev:deploy` deploy your development theme
  - `npm run dev:watch` watch development theme,
  - `npm run dev:open` open preview link for development theme
+ - `npm run dev:open:pb` open preview link for development theme with preview bar
  - `npm run dev:download` downlaod all development theme files to `/dist`
  - `npm run stage:deploy` deploys to development theme
  - `npm run stage` builds, deploys then opens preview to staging theme
  - `npm run stage:open` opens preview to staging theme
+ - `npm run stage:open:pb` opens preview to staging theme but opens with preview bar
  - `npm run stage:deploy` deploys to staging theme
  - `npm run stage:download` downloads all staging files to `/dist`
  - `npm run live:deploy` deploy to live (first must chage read only to fals - in `config.yml`
@@ -51,9 +53,12 @@ live:
  - `npm run build:css` generates development css
  - `npm run build:js` generates development js
  - `npm run build:img` compresses images in /src/images and places in assets
+ - `npm run watch` alias to **dev:watch**, watches /dist and /src files
  - `npm run watch:src` auto generates development code as you make changes to `/src` scss and js
  - `npm run watch:dist` start theme kit watch on `/dist` files to update theme on shopify
  - `npm run log:purgedCSS` genrates unused css selectors that were purged 
+ - `npm run open` alias for **dev:open**, opens preview link for development theme
+ - `npm run open:pb` alias for **dev:open:pb** open preview link for development theme with preview bar
 
  ### Project Structure ###
  ```
