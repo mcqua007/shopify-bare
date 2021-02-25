@@ -11,3 +11,4 @@
 *config.yml
 *.env
 *node_modules/
+*theme.update

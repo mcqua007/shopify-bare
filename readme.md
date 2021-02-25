@@ -1,3 +1,5 @@
+ # UPDATE V1.0.2 - Added Browser Sync for Auto Reloading Tab ###
+
  ## Getting Started ##
  **Why?**: This was built as a starter theme to bring modern build tools and a modern workflow into Shopify development since Shopfiy Slate has been deprecated. 
  This starter theme is as stripped down as much as possible so you can start with a blank canvas.
@@ -59,6 +61,8 @@ live:
  - `npm run log:purgedCSS` genrates unused css selectors that were purged 
  - `npm run open` alias for **dev:open**, opens preview link for development theme
  - `npm run open:pb` alias for **dev:open:pb** open preview link for development theme with preview bar
+ - `npm run bs` starts browser-sync which opens a proxy url on your dev theme for auto reloading etc...
+ - `npm run autoreload` alias for **bs**, which starts browser-sync for hot reloading
 
  ### Project Structure ###
  ```
@@ -82,10 +86,12 @@ live:
  │    │   ├─ product.scss         - example of template page sass
  │    │   └─ ...     
  │    └─ tmp/                     - used for temp output from gulp, i.e. rejected css
- │    │   ├─ styles.rejected.css  - shows all selectors that were purged from styles.scss
- │    │   └─ ...                  - other purged files       
+ │        ├─ styles.rejected.css  - shows all selectors that were purged from styles.scss
+ │        └─ ...                  - other purged files       
  │  
+ ├─ bs-config.js                  - broswer-sync config, add options to customize your needs
  ├─ gulpfile.js                   - use this to edit build pipelines if needed
+ ├─ theme.update                  - used for browser-sync, gets changed on theme kit watch
  └─  ... 
  ```
 
@@ -96,7 +102,7 @@ live:
 The intended workflow of this project is to have 3 themes. Live(production), Staging, and Development. Once you have these 3 theme id's you can put them into the config as outlined below. 
 
 *The development process*
- 1. First you should be run `npm run dev` which will open a preview link, start theme watch on  your *`/dist`* files, and start watching for changes in your *`/src`* files. 
+ 1. You have two options either `npm run dev` which will open a preview link, start theme watch on  your *`/dist`* files, and start watching for changes in your *`/src`* files or if you want to get *auto reloading* with Browser Sync, run `npm run watch` to start watching both your *`/src`* and *`/dist`* folders then open a new terminal tab and run `npm run bs` to start Browser Sync to get a link that will allow auto reload your site on file changes (among many other things)
  
  2. Once your changes look good on development the next step is to run `npm run stage`. This builds your files in production mode and deploys them to your staging theme. Then opens a preview to make sure changes are stable there. 
  
@@ -114,8 +120,13 @@ The intended workflow of this project is to have 3 themes. Live(production), Sta
   To do this you want to create 4 js files (index.js, collection.js, product.js, main.js) in `/src/js/`, and one module called shared.js in `/src/jsmodules`. You will import the shared.js module in all 4 script files since it will contain the code you need across all pages. You will then go into theme.liquid and write an if statement that imports the script for the page you are on orelse just imports main.js. For example, if the user is on the product page import product.js and nothing else. If the user is on the about us page import main.js and nothing else. This will keep your bundle as small as possible alongw ith Rollup's built-in tree-shaking. This same theory works for CSS though you do get cascading with the CSS so you canhave more than one file per page if you want.
   
    If you don't have a lot of features and functions you can just import one script and style file for the entire site. This is pretty much already set up in the site with main.js and styles.scss
-   
+
+### Browser Sync ###
+
+[Browser Sync](https://browsersync.io) is enabled by running `npm run bs` (first you willl want to start watching your files using `npm run watch`). This mainly allows us to use a proxy in order to get features such as auto reloading. You can read more about other features in the link above. I currently have a reload delay of 100ms because that's about hot long it seems for changes to be ready on Shopify's servers. This could be different for you and you can change it by editing the *reloadDelay* option in *`bs-config.js`*.
+
 ### Rollup ###
+
  [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
  We can import form node_modules but usually tree shaking doesn't work as it used commonJS. You can read the difference [here](https://sazzer.github.io/blog/2015/05/12/Javascript-modules-ES5-vs-ES6/). Rollup also has other plugins we can add as needed.
  Rollup is configured in `*gulpfile.js`*

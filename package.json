@@ -1,12 +1,12 @@
 {
   "name": "shopify-bare",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Starter For Shopify Theme",
   "main": "",
   "scripts": {
-    "dev": "(cd dist && theme open --env=development && theme watch --env=development --hidepb) & gulp watch",
+    "dev": "(cd dist && theme open --env=development && theme watch --env=development --hidepb --notify=../theme.update) & gulp watch",
     "dev:deploy": "cd dist && theme deploy--env=development",
-    "dev:watch": "(cd dist && theme watch --env=development) & gulp watch",
+    "dev:watch": "(cd dist && theme watch --env=development --notify=../theme.update) & gulp watch",
     "dev:open": "cd dist && theme open --env=development --hidepb",
     "dev:open:pb": "cd dist && theme open --env=development",
     "dev:download": "cd dist && theme download --env=development",
@@ -25,9 +25,11 @@
     "log:purgedCSS": "gulp log:purgedCSS",
     "open": "cd dist && theme open --env=development --hidepb",
     "open:pb": "cd dist && theme open --env=development",
-    "watch": "(cd dist && theme watch --env=development) & gulp watch",
+    "watch": "(cd dist && theme watch --env=development --notify=../theme.update) & gulp watch",
     "watch:src": "gulp watch",
-    "watch:dist": "cd dist && theme watch --env=development"
+    "watch:dist": "cd dist && theme watch --env=development --notify=../theme.update",
+    "autoreload": "npx browser-sync start --config bs-config.js",
+    "bs": "npx browser-sync start --config bs-config.js"
   },
   "author": "mcqua007",
   "license": "ISC",
@@ -37,6 +39,7 @@
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
+    "browser-sync": "^2.26.14",
     "cli-confirm": "^1.0.1",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
@@ -53,6 +56,7 @@
     "gulp-terser": "^2.0.1",
     "gulp-touch-custom": "^1.0.3",
     "gulp-watch": "^5.0.1",
+    "js-yaml": "^3.14.1",
     "rollup": "^2.36.0",
     "sass": "^1.32.4"
   }
