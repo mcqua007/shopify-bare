@@ -1,7 +1,7 @@
 {
   "name": "shopify-bare",
-  "version": "1.0.2",
-  "description": "Starter For Shopify Theme",
+  "version": "1.0.3",
+  "description": "Pre-configured/opinionated way to Start Developing a Shopify Theme",
   "main": "",
   "scripts": {
     "dev": "(cd dist && theme open --env=development && theme watch --env=development --hidepb --notify=../theme.update) & gulp watch",
@@ -32,7 +32,7 @@
     "bs": "npx browser-sync start --config bs-config.js"
   },
   "author": "mcqua007",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",

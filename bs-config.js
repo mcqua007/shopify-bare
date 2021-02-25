@@ -37,5 +37,12 @@ module.exports = {
         return match + snippet;
       }
     }
+  },
+  //keeps adding the _fd=0 to relative links in order for shopify to force direct out of browser sync
+  middleware: function(req, res, next) {
+    if (!req.url.includes('_fd')) {
+      req.url = req.url.match(/\?./) ? req.url + '&_fd=0' : req.url + '?_fd=0';
+    }
+    return next();
   }
 };
