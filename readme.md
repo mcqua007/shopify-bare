@@ -123,6 +123,8 @@ The intended workflow of this project is to have 3 themes. Live(production), Sta
 
 [Browser Sync](https://browsersync.io) is enabled by running `npm run bs` (first you willl want to start watching your files using `npm run watch`). This mainly allows us to use a proxy in order to get features such as auto reloading. You can read more about other features in the link above. I currently have a reload delay of 100ms because that's about hot long it seems for changes to be ready on Shopify's servers. This could be different for you and you can change it by editing the *reloadDelay* option in *`bs-config.js`*.
 
+**One thing to note.** Shopify *force redirects* when you have a custom domain which can disconnect you from Browser Sync. This means clicking on any links when using broswer sync will try and redirect you to your site's custom domain. I fixed the issue for relative links (ex. /collections/shop-all) by writing a middleware function in *`bs-config.js`* that appends the don't force flag `_fd=0` on each link. If you need hardcoded links you can choose a [port to run Browser Sync](https://www.browsersync.io/docs/options/#option-port), then in the middleware options write logic that replaces the host with localhost and the port you chose. Make sure to keep the logic that appends the `_fd=0` flag.
+
 ### Rollup ###
 
  [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
