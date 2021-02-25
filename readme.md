@@ -1,5 +1,3 @@
- # UPDATE V1.0.2 - Added Browser Sync for Auto Reloading Tab ###
-
  ## Getting Started ##
  **Why?**: This was built as a starter theme to bring modern build tools and a modern workflow into Shopify development since Shopfiy Slate has been deprecated. 
  This starter theme is as stripped down as much as possible so you can start with a blank canvas.
