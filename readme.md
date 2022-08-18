@@ -1,8 +1,8 @@
  ## Getting Started ##
- **Why?**: This was built as a starter theme to bring modern build tools and a modern workflow into Shopify development since Shopfiy Slate has been deprecated. 
+ **Why?**: This was built as a starter theme to bring modern build tools and a modern workflow into Shopify development since Shopify Slate has been deprecated. 
  This starter theme is as stripped down as much as possible so you can start with a blank canvas.
 
- **Pre-requisites**: Need to have [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed. This should work for the latest versions of each but for trouble shooting I have the falling versions: npm(7.5.4) | node(v12.16.1) | gulp(CLI version: 2.3.0,Local version: 4.0.2) | ThemeKit (1.1.6 darwin/amd64)
+ **Pre-requisites**: Need to have [Shopify CLI](https://shopify.dev/themes/tools/cli) (for serve & share commands), [Shopify Theme Kit](https://shopify.github.io/themekit/), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed. This should work for the latest versions of each but for trouble shooting I have the falling versions: npm(7.5.4) | node(v12.16.1) | gulp(CLI version: 2.3.0,Local version: 4.0.2) | ThemeKit (1.1.6 darwin/amd64)
  
  ### Configuration ###
  If you have all pre-requisites install from above then go ahead and download the latest release. After downloading the release/repo then `cd project-name` and run command `npm install`. This will install all of the development dependencies.
@@ -32,20 +32,22 @@ live:
   Once you have the *`config.yml`* setup you can run `npm run dev` inside the projects root. This will start development on your dev theme by opening a preview link, starting themekit to watch for changes, and also start watching for changes in your *`src/`* folder.
 
 ### Commands ###
-  List of commands you can use with npm:
+  List of commands you can use with npm
+ - `npm run serve` (recommended) opens auto generated development theme preview link, start watching src files, and has hot reloading etc...
+ - `npm run share` opens preview link from shopify serves auto generated dev theme
  - `npm run dev` opens development theme preview link, start watching src files, and starts theme kit watch
  - `npm run dev:deploy` deploy your development theme
  - `npm run dev:watch` watch development theme,
  - `npm run dev:open` open preview link for development theme
  - `npm run dev:open:pb` open preview link for development theme with preview bar
- - `npm run dev:download` downlaod all development theme files to `/dist`
+ - `npm run dev:download` download all development theme files to `/dist`
  - `npm run stage:deploy` deploys to development theme
  - `npm run stage` builds, deploys then opens preview to staging theme
  - `npm run stage:open` opens preview to staging theme
  - `npm run stage:open:pb` opens preview to staging theme but opens with preview bar
  - `npm run stage:deploy` deploys to staging theme
  - `npm run stage:download` downloads all staging files to `/dist`
- - `npm run live:deploy` deploy to live (first must chage read only to fals - in `config.yml`
+ - `npm run live:deploy` deploy to live (first must change read only to false - in `config.yml`
  - `npm run live:download` download all live theme files to `/dist`
  - `npm run build` generates production ready css and js
  - `npm run build:dev` generates css and js with no minifier etc...
@@ -111,17 +113,17 @@ The intended workflow of this project is to have 3 themes. Live(production), Sta
 **How to handle CSS and Javascript?**
   So first off I should let you know that all built js and css files have `.min` suffix(ex. styles.min.css ). This means when you reference the file in liquid you need to include the suffix. I have two theories on how a project should handle the CSS and Javascript files depending on your needs.
 
- If you have a lot of different features/styles per page I think this is the best approach. The main idea with Rollup is to have one js file per page. To keep the global scope clear rollup builds your files within an immediately invokedfunction expression. This means we can't stack script tags on top of one another to have access variables and functions in each script.
+ If you have a lot of different features/styles per page I think this is the best approach. The main idea with Rollup is to have one js file per page. To keep the global scope clear rollup builds your files within an immediately invoked function expression. This means we can't stack script tags on top of one another to have access variables and functions in each script.
 
- The only option is to put all your first-party js into one file. If you have code that's only gonna beused on certain pages and don't want to add it where it isn't needed then you need to make a script per page needed andthen one script that has your js that you share across the site. As an example, let's say you only have custom js for the index, product, and collection page. The rest of your site shares the same code. 
+ The only option is to put all your first-party js into one file. If you have code that's only gonna be used on certain pages and don't want to add it where it isn't needed then you need to make a script per page needed and then one script that has your js that you share across the site. As an example, let's say you only have custom js for the index, product, and collection page. The rest of your site shares the same code. 
 
-  To do this you want to create 4 js files (index.js, collection.js, product.js, main.js) in `/src/js/`, and one module called shared.js in `/src/jsmodules`. You will import the shared.js module in all 4 script files since it will contain the code you need across all pages. You will then go into theme.liquid and write an if statement that imports the script for the page you are on orelse just imports main.js. For example, if the user is on the product page import product.js and nothing else. If the user is on the about us page import main.js and nothing else. This will keep your bundle as small as possible alongw ith Rollup's built-in tree-shaking. This same theory works for CSS though you do get cascading with the CSS so you canhave more than one file per page if you want.
+  To do this you want to create 4 js files (index.js, collection.js, product.js, main.js) in `/src/js/`, and one module called shared.js in `/src/jsmodules`. You will import the shared.js module in all 4 script files since it will contain the code you need across all pages. You will then go into theme.liquid and write an if statement that imports the script for the page you are on or else just imports main.js. For example, if the user is on the product page import product.js and nothing else. If the user is on the about us page import main.js and nothing else. This will keep your bundle as small as possible along with Rollup's built-in tree-shaking. This same theory works for CSS though you do get cascading with the CSS so you can have more than one file per page if you want.
   
    If you don't have a lot of features and functions you can just import one script and style file for the entire site. This is pretty much already set up in the site with main.js and styles.scss
 
-### Browser Sync ###
+### Browser Sync (I would recommend using serve command instead) ###
 
-[Browser Sync](https://browsersync.io) is enabled by running `npm run bs` (first you willl want to start watching your files using `npm run watch`). This mainly allows us to use a proxy in order to get features such as auto reloading. You can read more about other features in the link above. I currently have a reload delay of 100ms because that's about hot long it seems for changes to be ready on Shopify's servers. This could be different for you and you can change it by editing the *reloadDelay* option in *`bs-config.js`*.
+[Browser Sync](https://browsersync.io) is enabled by running `npm run bs` (first you will want to start watching your files using `npm run watch`). This mainly allows us to use a proxy in order to get features such as auto reloading. You can read more about other features in the link above. I currently have a reload delay of 100ms because that's about hot long it seems for changes to be ready on Shopify's servers. This could be different for you and you can change it by editing the *reloadDelay* option in *`bs-config.js`*.
 
 **One thing to note.** Shopify *force redirects* when you have a custom domain which can disconnect you from Browser Sync. This means clicking on any links when using broswer sync will try and redirect you to your site's custom domain. I fixed the issue for relative links (ex. /collections/shop-all) by writing a middleware function in *`bs-config.js`* that appends the don't force flag `_fd=0` on each link. If you need hardcoded links you can choose a [port to run Browser Sync](https://www.browsersync.io/docs/options/#option-port), then in the middleware options write logic that replaces the host with localhost and the port you chose. Make sure to keep the logic that appends the `_fd=0` flag.
 
@@ -133,11 +135,11 @@ The intended workflow of this project is to have 3 themes. Live(production), Sta
 
 ### PurgeCSS ###
 
- [PurgeCSS](https://purgecss.com/) looks at the **.liquid** files in the *`/dist`* folder as well as at **.js** files in *`/src/js/`* folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the **.js** or **.liquid** files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stipped we can run `npm run log:purgedCSS`. This will generated the related css files in *`/src/tmp/`*. 
+ [PurgeCSS](https://purgecss.com/) looks at the **.liquid** files in the *`/dist`* folder as well as at **.js** files in *`/src/js/`* folder. It will look for any css selectors and not strip those out of the generated css. That means that any css selectors not in the **.js** or **.liquid** files (in their respective directories) will be removed from the css automatically upon each generation of that file. To see what selectors are being stripped we can run `npm run log:purgedCSS`. This will generated the related css files in *`/src/tmp/`*. 
 
- The way PurgeCSS parses js files is by making each word a selector. This is helpfull because it gets all css that needs to stay in stylesheets but sometimes can leave css that isn't being used (though this seems rare). 
+ The way PurgeCSS parses js files is by making each word a selector. This is helpful because it gets all css that needs to stay in stylesheets but sometimes can leave css that isn't being used (though this seems rare). 
 
- **Example:** If we had no paragrpah tags in the .liquid files but had a pragraph as a selector for some styles i.e. ` p { color: red}`. We would want this removed because it isn't in use, but if we have a variable in js all named p (i.e. `var p = 2;`) it may not remove it from the css. 
+ **Example:** If we had no paragraph tags in the .liquid files but had a paragraph as a selector for some styles i.e. ` p { color: red}`. We would want this removed because it isn't in use, but if we have a variable in js all named p (i.e. `var p = 2;`) it may not remove it from the css. 
 
 ### *Caveats ###
 

@@ -1,9 +1,11 @@
 {
   "name": "shopify-bare",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Pre-configured/opinionated way to Start Developing a Shopify Theme",
   "main": "",
   "scripts": {
+    "serve": "shopify theme serve /src & gulp watch",
+    "share": "shopify theme share /src",
     "dev": "(cd dist && theme open --env=development && theme watch --env=development --hidepb --notify=../theme.update) & gulp watch",
     "dev:deploy": "cd dist && theme deploy--env=development",
     "dev:watch": "(cd dist && theme watch --env=development --notify=../theme.update) & gulp watch",
@@ -58,6 +60,6 @@
     "gulp-watch": "^5.0.1",
     "js-yaml": "^3.14.1",
     "rollup": "^2.36.0",
-    "sass": "^1.32.4"
+    "sass": "^1.51.0"
   }
 }
