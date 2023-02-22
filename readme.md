@@ -27,17 +27,17 @@ List of commands you can use with npm
 
 - `yarn serve` (recommended) opens auto generated development theme preview link, start watching src files, and has hot reloading etc...
 - `yarn share` opens preview link from shopify serves auto generated dev theme
-- `yarn dev` opens development theme preview link, start watching src files, and starts theme kit watch
+- `yarn dev` authenticate into your shopify store, start watching src files, & starts local dev server
 - `yarn deploy` deploy your development theme
 - `yarn watch` watch development theme,
 - `yarn open` open preview link for development theme
 - `yarn download` download all development theme files to `/dist`
-- `yarn build` generates production ready css and js
+- `yarn build` generates css, js, and images
+- `yarn build:prod` generates production ready css, js, images
 - `yarn build:css` generates development css
 - `yarn build:js` generates development js
 - `yarn build:img` compresses images in /src/images and places in assets
 - `yarn watch` watches `/src` files for changes
-- `yarn log:purgedCSS` genrates unused css selectors that were purged
 - `yarn open` opens preview link for development theme
 
 ### Project Structure
@@ -55,15 +55,13 @@ List of commands you can use with npm
 │    │   ├─ modules/             - place to put javascript modules
 │    │   ├─ main.js              - main js files used across site
 │    │   └─ ...                  - other pages of site js go here ie.e cart.js
-│    ├─ sass/
-│    │   ├─ modules/             - place to put scss modules
-│    │   │   └─ _headers.scss    - example of partials starts with _
-│    │   ├─ styles.scss          - main styles used across the site
-│    │   ├─ product.scss         - example of template page sass
+│    ├─ styles/
+│    │   ├─ lib/                 - place to put other css that should be separate from app.css
+│    │   ├─ static/              - place to put static styles i.e. fonts
+│    │   ├─ components/          - place to put css components
+│    │   │   └─ button.css     - example of component
+│    │   ├─ app.css            - main styles used across the site
 │    │   └─ ...
-│    └─ tmp/                     - used for temp output from gulp, i.e. rejected css
-│        ├─ styles.rejected.css  - shows all selectors that were purged from styles.scss
-│        └─ ...                  - other purged files
 │
 ├─ .env                          - config file for your shopify store, use .env.sample to get started
 ├─ gulpfile.js                   - use this to edit build pipelines if needed

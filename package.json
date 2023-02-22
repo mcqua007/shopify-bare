@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "shopify theme serve /dist & gulp watch",
     "share": "shopify theme share /dist",
-    "dev": "shopify theme serve /dist & gulp watch",
+    "dev": "gulp store:login && shopify theme serve /dist & gulp watch",
     "download": "shopify theme /dist download --development",
     "build": "gulp build",
     "build:prod": "NODE_ENV=production gulp build",
