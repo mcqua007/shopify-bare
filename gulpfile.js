@@ -98,17 +98,16 @@ task("build", async () => {
 });
 
 //compress images
-//build css from scss
 task("build:img", async () => {
   imageBuildChannel([config.srcImg]);
 });
 
-//build js files
+//build/bundle js
 task("build:js", async () => {
   jsBuildChannel("src/js/*.{js, jsx, ts, tsx}");
 });
 
-//build css from scss
+//build/compile tailwind css
 task("build:css", async () => {
   cssBuildChannel(config.srcStyles);
 });
