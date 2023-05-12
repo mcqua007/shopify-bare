@@ -120,6 +120,11 @@ task("watch", async () => {
   watch(config.rootDist, parallel("build:css"));
 });
 
+task("deploy:staging", async () => {
+  const cmd = new run.Command(`shopify theme push --theme ${process.env.STAGING_ID} --store ${process.env.STORE_URL}`);
+  cmd.exec();
+});
+
 task("store:login", async () => {
   const cmd = new run.Command(`shopify login --store ${process.env.STORE_URL}`);
   cmd.exec();
