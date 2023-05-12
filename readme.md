@@ -72,13 +72,11 @@ List of commands you can use with npm
 
 _The development process_
 
-1.  You have two options either `yarn dev` which will open a preview link, start theme watch on your _`/dist`_ files, and start watching for changes in your _`/src`_ files or if you want to get _auto reloading_ with Browser Sync, run `yarn watch` to start watching both your _`/src`_ and _`/dist`_ folders then open a new terminal tab and run `yarn bs` to start Browser Sync to get a link that will allow auto reload your site on file changes (among many other things)
+1.  You have two options either `yarn dev` which will open a preview link, start theme watch on your _`/dist`_ files, and start watching for changes in your _`/src`_ files or if you want to get _auto reloading_ with Shopify CLI's dev command, run `yarn watch` to start watching both your _`/src`_ and _`/dist`_ folders.
+2. At this point you have local dev working. I would recommend uaing [Shopify's github integration](https://shopify.dev/docs/themes/tools/github) to get preview links for new PRs and auto merges into main to live. Or right your own github actions to get your CI/CD flow the way you would like.
 
-2.  Once your changes look good on development the next step is to run `yarn stage`. This builds your files in production mode and deploys them to your staging theme. Then opens a preview to make sure changes are stable there.
+3.  Once you have verified the changes on your PR. You can deploy be merging into main. Again this functionality requires you install [Shopify's github integration](https://shopify.dev/docs/themes/tools/github) on your repo.
 
-3.  Once you have verified the changes. You can deploy to live by running `yarn live:deploy`, this will confirm you actually want to deploy to live, enter y and watch your changes go live.
-
-P.S. This project doesn't give you the command to watch live even though theme kit allows you to. You really should never watch live.
 
 **How to handle CSS and Javascript?**
 So first off I should let you know that all built js and css files have `.min` suffix(ex. styles.min.css ). This means when you reference the file in liquid you need to include the suffix. I have two theories on how a project should handle the CSS and Javascript files depending on your needs.
@@ -96,10 +94,6 @@ If you don't have a lot of features and functions you can just import one script
 [Rollup](https://rollupjs.org/guide/en/) is used to bundle [ES6 javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) within other files and use in the browser. This also performs tree shaking so it's only imports what we use.
 We can import form node_modules but usually tree shaking doesn't work as it used commonJS. You can read the difference [here](https://sazzer.github.io/blog/2015/05/12/Javascript-modules-ES5-vs-ES6/). Rollup also has other plugins we can add as needed.
 Rollup is configured in `*gulpfile.js`\*
-
-### \*Caveats
-
-This one isn't really that big of deal but, at this, I'm not watching the .liquid files with Gulp. This means JS and CSS builds don't get triggered when you only make a change to a _`.liquid`_ file. Most of the time this is not an issue. The only issue I have noticed is if a CSS selector or class is purged and then you add it to a .liquid file to use then you have to trigger a CSS rebuild. The other solution is to have gulp rebuild CSS and possibly JS src files upon each _`.liquid`_ file change. If you want to do this go to line 118 in _`gulpfile.js`_ and change it to this `watch(config.deepSass, config.liquid, series('build:css'));`
 
 ### \*Note
 
