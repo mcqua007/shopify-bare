@@ -10,7 +10,6 @@
     "download": "shopify theme /dist download --development",
     "build": "gulp build",
     "build:prod": "NODE_ENV=production gulp build",
-    "build:staging": "gulp build:staging",
     "build:css": "gulp build:css",
     "build:js": "gulp build:js",
     "open": "shopify theme open --development",
