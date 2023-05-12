@@ -30,7 +30,7 @@ List of commands you can use with npm
 - `yarn dev` authenticate into your shopify store, start watching src files, & starts local dev server
 - `yarn watch` watch development theme,
 - `yarn open` open preview link for development theme
-- `yarn download` download all development theme files to `/dist`
+- `yarn sync:settings` download live settings_data.json and all json templates files to `/dist`
 - `yarn build` generates css, js, and images
 - `yarn build:prod` generates production ready css, js, images
 - `yarn build:css` generates tailwind css
@@ -76,6 +76,18 @@ _The development process_
 2. At this point you have local dev working. I would recommend uaing [Shopify's github integration](https://shopify.dev/docs/themes/tools/github) to get preview links for new PRs and auto merges into main to live. Or right your own github actions to get your CI/CD flow the way you would like.
 
 3.  Once you have verified the changes on your PR. You can deploy be merging into main. Again this functionality requires you install [Shopify's github integration](https://shopify.dev/docs/themes/tools/github) on your repo.
+
+**Note if you use the github integration you need to change where your build files go. They need to be built into root. This also means you need to change any shopify cli commands ( sync:settings) to remove the path parameter (i.e. --path dist). To do change where the built files go into `gulpfile.js` and change the config object. Specfically change `dest` to be `./`.
+
+``` javascript
+const config = {
+  srcImg: "src/images/**/*.{jpg,jpeg,png,gif,svg}",
+  srcJS: "src/js/*.{js, jsx, ts, tsx}",
+  srcStyles: "src/styles/*.css",
+  rootDist: "dist/**/*.{liquid, json}",
+  dest: "./",
+};
+```
 
 
 **How to handle CSS and Javascript?**
