@@ -3,7 +3,7 @@
 **Why?**: This was built as a starter theme to bring modern build tools and a modern workflow into Shopify development since Shopify Slate has been deprecated.
 This starter theme is as stripped down as much as possible so you can start with a blank canvas.
 
-**Pre-requisites**: Need to have [Shopify CLI 2.X.X](https://shopify.dev/themes/tools/cli) (for serve & share commands), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed. This should work for the latest versions of each but for trouble shooting I have the falling versions: npm(7.5.4) | node(v12.16.1) | gulp(CLI version: 2.3.0,Local version: 4.0.2) | ThemeKit (1.1.6 darwin/amd64)
+**Pre-requisites**: Need to have [Shopify CLI 2.X.X](https://shopify.dev/themes/tools/cli) (for serve & share commands), [Node/NPM](https://nodejs.org/), [Gulp Cli](https://gulpjs.com/docs/en/getting-started/quick-start) installed. This should work for the latest versions of each but for trouble shooting I have the falling versions: npm(7.5.4) | node(v12.16.1^) | gulp(CLI version: 2.3.0,Local version: 4.0.2) | ThemeKit (1.1.6 darwin/amd64)
 
 ### Configuration
 
@@ -28,13 +28,12 @@ List of commands you can use with npm
 - `yarn serve` (recommended) opens auto generated development theme preview link, start watching src files, and has hot reloading etc...
 - `yarn share` opens preview link from shopify serves auto generated dev theme
 - `yarn dev` authenticate into your shopify store, start watching src files, & starts local dev server
-- `yarn deploy` deploy your development theme
 - `yarn watch` watch development theme,
 - `yarn open` open preview link for development theme
 - `yarn download` download all development theme files to `/dist`
 - `yarn build` generates css, js, and images
 - `yarn build:prod` generates production ready css, js, images
-- `yarn build:css` generates development css
+- `yarn build:css` generates tailwind css
 - `yarn build:js` generates development js
 - `yarn build:img` compresses images in /src/images and places in assets
 - `yarn watch` watches `/src` files for changes
