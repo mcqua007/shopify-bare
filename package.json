@@ -7,7 +7,7 @@
     "serve": "shopify theme serve /dist & gulp watch",
     "share": "shopify theme share /dist",
     "dev": "gulp store:login && shopify theme serve /dist & gulp watch",
-    "deploy": "gulp deplay:staging",
+    "deploy": "gulp deploy:staging",
     "sync:settings": "shopify theme pull --path dist --live --only \"config/settings_data.json\" --only \"templates/*.json\" --force",
     "build": "gulp build",
     "build:prod": "NODE_ENV=production gulp build",
